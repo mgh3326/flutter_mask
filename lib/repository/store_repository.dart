@@ -15,6 +15,10 @@ class StoreRepository {
     jsonStores.forEach((e) {
       stores.add(storeEntityFromJson(new StoreEntity(), e));
     });
-    return stores;
+    return stores.where((e) {
+      return e.remainStat == 'plenty' ||
+          e.remainStat == 'some' ||
+          e.remainStat == 'few';
+    }).toList();
   }
 }
